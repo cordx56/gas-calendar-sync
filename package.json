@@ -4,7 +4,7 @@
   "description": "Sync calendar events to other calendars",
   "main": "index.ts",
   "author": "cordx56 <cordx56@cordx.cx>",
-  "license": "MIT",
+  "license": "MPL-2.0",
   "private": true,
   "scripts": {
     "build": "webpack",
