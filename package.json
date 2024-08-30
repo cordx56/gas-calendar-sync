@@ -1,0 +1,26 @@
+{
+  "name": "gas-calendar-sync",
+  "version": "1.0.0",
+  "description": "Sync calendar events to other calendars",
+  "main": "index.ts",
+  "author": "cordx56 <cordx56@cordx.cx>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "deploy": "yarn build && clasp push"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-typescript": "^7.24.7",
+    "@google/clasp": "^2.4.2",
+    "@types/google-apps-script": "^1.0.83",
+    "babel-loader": "^9.1.3",
+    "gas-webpack-plugin": "^2.6.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {}
+}
