@@ -5,6 +5,8 @@ type Events = GoogleAppsScript.Calendar.Schema.Events;
 type Event = GoogleAppsScript.Calendar.Schema.Event;
 
 export function sync(trigger: { calendarId: string }) {
+  const lock = LockService.getUserLock();
+  lock.waitLock(3000);
   const calendarId = trigger.calendarId;
   const calendars = Calendar.CalendarList!.list().items!;
   const primaryId = calendars!.filter((v) => v.primary)[0]?.id;
@@ -28,6 +30,7 @@ export function sync(trigger: { calendarId: string }) {
 
     addProp("nextSyncTokens", { [calendarId]: diffEvents.nextSyncToken });
   }
+  lock.releaseLock();
 }
 
 function duplicateEvent(diffEvent: Event, targetCalendar: Calendar) {
