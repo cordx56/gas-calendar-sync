@@ -19,12 +19,16 @@ export function sync(trigger: { calendarId: string }) {
     const diffEvents = Calendar.Events!.list(calendarId, { syncToken });
 
     for (let diffEvent of diffEvents!.items!) {
-      console.log(`diffEvent: ${JSON.stringify(diffEvent)}`);
       if (diffEvent.status === "cancelled") {
         diffEvent = Calendar.Events!.get(calendarId, diffEvent.id!);
       }
+      console.log(`diffEvent: ${JSON.stringify(diffEvent)}`);
       for (const targetCalendar of calendars) {
-        duplicateEvent(diffEvent, targetCalendar);
+        try {
+          duplicateEvent(diffEvent, targetCalendar);
+        } catch (err) {
+          console.log(err);
+        }
       }
     }
 
